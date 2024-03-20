@@ -7,26 +7,47 @@ import UIKit
 import Nuke
 
 // TODO: Add table view data source conformance
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of rows for the table.
+        return 50
+
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Create, configure, and return a table view cell for the given row (i.e., `indexPath.row`)
+        // Create the cell
+        let cell = UITableViewCell()
+
+        // Configure the cell (i.e. update UI elements like labels, image views, etc.)
+        // Get the row where the cell will be placed using the `row` property on the passed in `indexPath` (i.e., `indexPath.row`)
+        cell.textLabel?.text = "Row \(indexPath.row)"
+
+        // Return the cell for use in the respective table view row
+        return cell
+
+    }
+
 
 
     // TODO: Add table view outlet
 
-
+    @IBOutlet weak var tableView: UITableView!
+    
     // TODO: Add property to store fetched movies array
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // TODO: Assign table view data source
+        tableView.dataSource = self //Samir - making the tableview = this file will be it's data source
 
 
         fetchMovies()
     }
 
     // Fetches a list of popular movies from the TMDB API
-    private func fetchMovies() {
+    private func fetchMovies() { //Samir - this is good code for starting any fetching data needs
 
         // URL for the TMDB Get Popular movies endpoint: https://developers.themoviedb.org/3/movies/get-popular-movies
         let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=b1446bbf3b4c705c6d35e7c67f59c413&language=en-US&page=1")!
