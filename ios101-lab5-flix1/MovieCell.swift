@@ -11,7 +11,7 @@ class MovieCell: UITableViewCell {
 
     @IBOutlet weak var posterImageView: UIImageView!
   
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel! // Samir - for future, can't edit the name directly here or app won't work. Must delete the outlet and redo
     
     @IBOutlet weak var overviewLabel: UILabel!
     
