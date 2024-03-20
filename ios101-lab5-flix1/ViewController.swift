@@ -92,6 +92,8 @@ class ViewController: UIViewController, UITableViewDataSource {
                 DispatchQueue.main.async { [weak self] in 
                     // Update the movies property so we can access movie data anywhere in the view controller.
                     self?.movies = movies
+                    self?.tableView.reloadData()
+
                     
                     print("🍏 Fetched and stored \(movies.count) movies")
 
